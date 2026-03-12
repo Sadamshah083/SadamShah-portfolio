@@ -423,8 +423,10 @@ body.dark .loader_line:after{
 .iknow_tm_topbar .logo{
 	display: inline-block;
 }
-.iknow_tm_topbar .logo img{
-	max-width: 125px;
+.iknow_tm_topbar .logo img {
+	max-width: 135px;
+	transform: rotate(6deg);
+	/* Slight 5-degree tilt */
 }
 .iknow_tm_topbar .right{
 	display: flex;
