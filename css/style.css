@@ -474,7 +474,7 @@ body.dark .loader_line:after{
 	font-weight: 600;
 	display: inline-block;
 	background-color: #ff451b;
-	padding: 14px 50px;
+	padding: 10px 30px;
 	border-radius: 10px;
 	white-space: nowrap;
 	
@@ -602,6 +602,7 @@ body.dark .loader_line:after{
 	position: relative;
 	z-index: 2;
 }
+
 .iknow_tm_video .video_inner{
 	display: inline-block;
 	display: flex;
