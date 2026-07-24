@@ -592,6 +592,79 @@ body.dark .loader_line:after{
 	font-size: 24px;
 	margin-bottom: 27px;
 }
+.experience_letters{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 22px 36px;
+	margin-top: 8px;
+	position: relative;
+	z-index: 2;
+}
+.experience_letter_item{
+	display: inline-flex;
+	align-items: center;
+	gap: 14px;
+	text-decoration: none;
+	color: inherit;
+}
+.experience_letter_item .icon{
+	width: 56px;
+	height: 56px;
+	min-width: 56px;
+	border-radius: 100%;
+	background-color: #ffb324;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	-webkit-transition: all .3s ease;
+	   -moz-transition: all .3s ease;
+	    -ms-transition: all .3s ease;
+	     -o-transition: all .3s ease;
+	        transition: all .3s ease;
+}
+.experience_letter_item .icon:after{
+	position: absolute;
+	content: "";
+	top: 1px;
+	bottom: 1px;
+	left: 1px;
+	right: 1px;
+	border-radius: 100%;
+	background-color: rgba(0,0,0,.03);
+	z-index: -1;
+	-webkit-transition: all .3s ease;
+	   -moz-transition: all .3s ease;
+	    -ms-transition: all .3s ease;
+	     -o-transition: all .3s ease;
+	        transition: all .3s ease;
+}
+.experience_letter_item:hover .icon:after{
+	top: -8px;
+	bottom: -8px;
+	left: -8px;
+	right: -8px;
+}
+.experience_letter_item .icon svg,
+.experience_letter_item .icon img{
+	width: 22px;
+	height: 22px;
+}
+.experience_letter_item .icon svg path,
+.experience_letter_item .icon svg polygon,
+.experience_letter_item .icon svg rect{
+	fill: #fff;
+}
+.experience_letter_item .label{
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 1.2;
+	color: #000;
+}
+
 .iknow_tm_video{
 	width: auto;
 	height: auto;
@@ -4986,6 +5059,11 @@ input[type=number] {
 	.rounded_shapes .one,.rounded_shapes .two,.rounded_shapes .three,.rounded_shapes .four,.rounded_shapes .five,.rounded_shapes .six,.rounded_shapes .seven,.rounded_shapes .eight,.rounded_shapes .nine,.rounded_shapes .ten,.rounded_shapes .eleven,.rounded_shapes .twelve,.rounded_shapes .thirteen,.rounded_shapes .fourteen,.rounded_shapes .fifteen,.rounded_shapes .sixteen,.rounded_shapes .seventeen,.rounded_shapes .eighteen{display: none;}
 }
 @media (max-width: 768px) {
+	.experience_letters{gap: 16px 22px;}
+	.experience_letter_item .icon{width: 48px;height: 48px;min-width: 48px;}
+	.experience_letter_item .icon svg,
+	.experience_letter_item .icon img{width: 18px;height: 18px;}
+	.experience_letter_item .label{font-size: 15px;}
 	.iknow_tm_hero_third .content .hello{font-size: 21px;}
 	.iknow_tm_hero_third .content .name{font-size: 48px;margin-bottom: 10px;}
 	.iknow_tm_hero_third .content .text{font-size: 16px;margin-bottom: 25px;}
