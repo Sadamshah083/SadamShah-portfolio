@@ -561,37 +561,29 @@ function iknow_tm_contact_form(){
 	
 	jQuery(".contact_form #send_message").off().on('click', function(){
 		
-		var name 		= jQuery(".contact_form #name").val();
-		var email 		= jQuery(".contact_form #email").val();
-		var message 	= jQuery(".contact_form #message").val();
-		var subject 	= jQuery(".contact_form #subject").val();
+		var name 		= jQuery(".contact_form #name").val().trim();
+		var email 		= jQuery(".contact_form #email").val().trim();
+		var phone 		= jQuery(".contact_form #phone").val().trim();
+		var message 	= jQuery(".contact_form #message").val().trim();
+		var subject 	= jQuery(".contact_form #subject").val().trim() || "Portfolio Contact";
 		var success     = jQuery(".contact_form .returnmessage").data('success');
 	
-		jQuery(".contact_form .returnmessage").empty(); //To empty previous error/success message.
-		//checking for blank fields	
+		jQuery(".contact_form .returnmessage").empty();
 		if(name===''||email===''||message===''){
-			
 			jQuery('div.empty_notice').slideDown(500).delay(2000).slideUp(500);
 		}
 		else{
-			// Returns successful data submission message when the entered information is stored in database.
-			jQuery.post("modal/contact.php",{ ajax_name: name, ajax_email: email, ajax_message:message, ajax_subject: subject}, function(data) {
-				
-				jQuery(".contact_form .returnmessage").append(data);//Append returned message to message paragraph
-				
-				
-				if(jQuery(".contact_form .returnmessage span.contact_error").length){
-					jQuery(".contact_form .returnmessage").slideDown(500).delay(2000).slideUp(500);		
-				}else{
-					jQuery(".contact_form .returnmessage").append("<span class='contact_success'>"+ success +"</span>");
-					jQuery(".contact_form .returnmessage").slideDown(500).delay(4000).slideUp(500);
-				}
-				
-				if(data===""){
-					jQuery("#contact_form")[0].reset();//To reset form fields on success
-				}
-				
-			});
+			// Static hosting (Vercel) has no PHP — open the user's email client instead.
+			var body = "Name: " + name + "\nEmail: " + email;
+			if(phone){ body += "\nPhone: " + phone; }
+			body += "\n\n" + message;
+			var mailto = "mailto:sadamshah083@gmail.com"
+				+ "?subject=" + encodeURIComponent(subject)
+				+ "&body=" + encodeURIComponent(body);
+			window.location.href = mailto;
+			jQuery(".contact_form .returnmessage").append("<span class='contact_success'>"+ success +"</span>");
+			jQuery(".contact_form .returnmessage").slideDown(500).delay(4000).slideUp(500);
+			jQuery("#contact_form")[0].reset();
 		}
 		return false; 
 	});
