@@ -425,34 +425,75 @@ body.dark .loader_line:after{
 }
 .iknow_tm_topbar .logo img {
 	max-width: 135px;
+	transition: transform .35s cubic-bezier(.22,1,.36,1);
+}
+.iknow_tm_topbar .logo a:hover img{
+	transform: scale(1.03);
 }
 .iknow_tm_topbar .right{
 	display: flex;
+	flex-direction: row;
 	align-items: center;
+	gap: 18px;
 }
 .iknow_tm_topbar .right .social{
 	position: relative;
-	top: 3px;
+	top: 0;
 }
 .iknow_tm_topbar .right .social ul{
 	margin: 0px;
 	list-style-type: none;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 10px;
 }
 .iknow_tm_topbar .right .social ul li{
-	margin: 0px 15px 0px 0px;
+	margin: 0;
 	display: inline-block;
+	opacity: 0;
+	transform: translateY(-10px);
+	animation: topbarSocialIn .55s cubic-bezier(.22,1,.36,1) forwards;
+	animation-delay: calc(.1s + (var(--i, 0) * .06s));
 }
 .iknow_tm_topbar .right .social ul li:last-child{
 	margin-right: 0px;
 }
 .iknow_tm_topbar .right .social ul li a{
 	text-decoration: none;
-	color: #000;
+	color: #0f172a;
+	width: 42px;
+	height: 42px;
+	border-radius: 12px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(255,255,255,.82);
+	border: 1px solid rgba(15,23,42,.07);
+	box-shadow: 0 8px 20px rgba(15,23,42,.05);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	transition: transform .35s cubic-bezier(.22,1,.36,1), background-color .3s ease, border-color .3s ease, box-shadow .3s ease, color .3s ease;
+}
+.iknow_tm_topbar .right .social ul li a:hover{
+	color: #fff;
+	background: linear-gradient(145deg, #ff6a3d 0%, #ff451b 100%);
+	border-color: transparent;
+	transform: translateY(-3px);
+	box-shadow: 0 12px 24px rgba(255,69,27,.22);
 }
 .iknow_tm_topbar .right .social ul li .svg{
-	width: 20px;
-	height: 20px;
+	width: 16px;
+	height: 16px;
 	display: block;
+	transition: transform .35s ease;
+}
+.iknow_tm_topbar .right .social ul li a:hover .svg{
+	transform: scale(1.08);
+}
+.iknow_tm_topbar .right .social ul li a .svg path,
+.iknow_tm_topbar .right .social ul li a svg path{
+	fill: currentColor;
 }
 .iknow_tm_button{
 	width: 100%;
@@ -462,29 +503,96 @@ body.dark .loader_line:after{
 }
 .iknow_tm_topbar .iknow_tm_button{
 	width: auto;
-	margin-left: 30px;
+	margin-left: 0;
+	opacity: 0;
+	transform: translateY(-10px);
+	animation: topbarSocialIn .55s cubic-bezier(.22,1,.36,1) forwards;
+	animation-delay: .35s;
 }
 .iknow_tm_button a{
 	text-decoration: none;
 	color: #fff;
-	font-size: 16px;
+	font-size: 14px;
 	text-transform: uppercase;
-	font-weight: 600;
-	display: inline-block;
-	background-color: #ff451b;
-	padding: 10px 30px;
-	border-radius: 10px;
+	letter-spacing: .04em;
+	font-weight: 700;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	background: linear-gradient(145deg, #ff6a3d 0%, #ff451b 55%, #e6360f 100%);
+	padding: 12px 26px;
+	border-radius: 12px;
 	white-space: nowrap;
-	
-	-webkit-transition: all .3s ease;
-	   -moz-transition: all .3s ease;
-	    -ms-transition: all .3s ease;
-	     -o-transition: all .3s ease;
-	        transition: all .3s ease;
+	border: 1px solid transparent;
+	box-shadow: 0 10px 24px rgba(255,69,27,.22);
+	position: relative;
+	overflow: hidden;
+	-webkit-transition: all .35s cubic-bezier(.22,1,.36,1);
+	   -moz-transition: all .35s cubic-bezier(.22,1,.36,1);
+	    -ms-transition: all .35s cubic-bezier(.22,1,.36,1);
+	     -o-transition: all .35s cubic-bezier(.22,1,.36,1);
+	        transition: all .35s cubic-bezier(.22,1,.36,1);
+}
+.iknow_tm_button a:before{
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(120deg, transparent 20%, rgba(255,255,255,.22) 50%, transparent 80%);
+	transform: translateX(-120%);
+	transition: transform .55s ease;
+}
+.iknow_tm_button a:hover:before{
+	transform: translateX(120%);
 }
 .iknow_tm_button a:hover{
-	background-color: #ffb324;
+	background: linear-gradient(145deg, #ffc44a 0%, #ffb324 55%, #f09a00 100%);
+	transform: translateY(-3px);
+	box-shadow: 0 14px 28px rgba(255,179,36,.28);
 }
+.iknow_tm_topbar .iknow_tm_button a .btn_icon{
+	width: 16px;
+	height: 16px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+.iknow_tm_topbar .iknow_tm_button a .btn_icon .svg,
+.iknow_tm_topbar .iknow_tm_button a .btn_icon svg{
+	width: 16px;
+	height: 16px;
+	display: block;
+}
+.iknow_tm_topbar .iknow_tm_button a .btn_icon svg path,
+.iknow_tm_topbar .iknow_tm_button a .btn_icon svg polygon,
+.iknow_tm_topbar .iknow_tm_button a .btn_icon svg rect{
+	fill: #fff;
+}
+.iknow_tm_topbar .iknow_tm_button a .btn_text{
+	position: relative;
+	z-index: 1;
+}
+
+@keyframes topbarSocialIn{
+	0%{
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+	100%{
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@media (prefers-reduced-motion: reduce){
+	.iknow_tm_topbar .right .social ul li,
+	.iknow_tm_topbar .iknow_tm_button{
+		animation: none !important;
+		opacity: 1;
+		transform: none;
+	}
+}
+
 .iknow_tm_topbar .trigger_wrapper{
 	position: relative;
 }
@@ -4918,10 +5026,12 @@ input[type=number] {
 	.container{max-width: 1070px;}
 	.iknow_tm_topbar .topbar_inner{padding-top: 25px;}
 	.iknow_tm_topbar .logo img{max-width: 95px;}
-	.iknow_tm_button a{font-size: 14px;padding: 8px 35px;}
-	.iknow_tm_topbar .right .social ul li{margin-right: 8px;}
-	.iknow_tm_topbar .right .social ul li .svg{width: 17px;height: 17px;}
-	.iknow_tm_topbar .iknow_tm_button{margin-left: 23px;}
+	.iknow_tm_button a{font-size: 13px;padding: 10px 22px;}
+	.iknow_tm_topbar .right{gap: 12px;}
+	.iknow_tm_topbar .right .social ul{gap: 8px;}
+	.iknow_tm_topbar .right .social ul li a{width: 36px;height: 36px;border-radius: 10px;}
+	.iknow_tm_topbar .right .social ul li .svg{width: 14px;height: 14px;}
+	.iknow_tm_topbar .iknow_tm_button{margin-left: 0;}
 	.iknow_tm_hero .main_menu ul li{width: 95px;height: 95px;padding: 35px;}
 	.iknow_tm_hero .main_menu ul li .menu_icon{width: 25px;height: 25px;}
 	.iknow_tm_hero .main_menu ul li .svg{width: 25px;height: 25px;}
