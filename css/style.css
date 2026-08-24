@@ -1802,6 +1802,7 @@ body.dark .loader_line:after{
 	display: inline-block;
 	margin-bottom: 6px;
 }
+.iknow_tm_main_title h2,
 .iknow_tm_main_title h3{
 	font-size: 47px;
 	font-weight: 700;
@@ -5043,7 +5044,7 @@ input[type=number] {
 	.iknow_tm_hero .text{font-size: 20px;margin-bottom: 20px;}
 	.iknow_tm_video .circle{width: 60px;height: 60px;}
 	.iknow_tm_video .play{font-size: 20px;padding-left: 20px;}
-	.iknow_tm_main_title h3{font-size: 35px;}
+	.iknow_tm_main_title h2, .iknow_tm_main_title h3{font-size: 35px;}
 	.iknow_tm_about .right .bigger_text p{font-size: 19px;}
 	.iknow_tm_hero_second .subtitle{font-size: 25px;}
 	.iknow_tm_hero_second .name{font-size:  70px;margin-bottom: 15px;}
@@ -5096,7 +5097,7 @@ input[type=number] {
 	.iknow_tm_fixed_content .infobar .extra .short{margin-bottom: 15px;}
 	.iknow_tm_fixed_content .infobar .extra{padding: 20px 10px;}
 	.iknow_tm_fixed_content .mainbar{padding: 55px;}
-	.iknow_tm_fixed_content .iknow_tm_main_title h3{font-size: 31px;}
+	.iknow_tm_fixed_content .iknow_tm_main_title h2, .iknow_tm_fixed_content .iknow_tm_main_title h3{font-size: 31px;}
 	.iknow_tm_fixed_content .iknow_tm_resume_title h3{font-size: 30px;}
 	.iknow_tm_resume .info_list ul li .short .year span{font-size: 15px;padding: 5px 25px 4px 25px;}
 	.iknow_tm_resume .info_list ul li .short .job h3{font-size: 19px;margin-bottom: 3px;}
@@ -5287,7 +5288,7 @@ input[type=number] {
 	.iknow_tm_about{flex-direction: column-reverse;}
 	.iknow_tm_about .right{padding-left: 0px;width: 100%;top: 0px;}
 	.iknow_tm_main_title{max-width: 100%;}
-	.iknow_tm_main_title h3{font-size: 40px;}
+	.iknow_tm_main_title h2, .iknow_tm_main_title h3{font-size: 40px;}
 	.iknow_tm_about .left{width: 100%;}
 	.iknow_tm_about .left .image img{display: none;}
 	.iknow_tm_about .left .image .main{display: none;}
@@ -5343,7 +5344,7 @@ input[type=number] {
 	
 	.iknow_tm_topbar .logo img{max-width: 90px;}
 	.iknow_tm_main_title span{font-size: 18px;}
-	.iknow_tm_main_title h3{font-size: 30px;}
+	.iknow_tm_main_title h2, .iknow_tm_main_title h3{font-size: 30px;}
 	.iknow_tm_about .right .bigger_text p{font-size: 19px;}
 	.circular_progress_bar .list_inner:after{width: 108px;height: 108px;}
 	.circular_progress_bar .number{font-size: 20px;}

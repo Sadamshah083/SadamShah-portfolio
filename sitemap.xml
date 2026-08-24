@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <url>
+    <loc>https://sadam-shah-portfolio.vercel.app/</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+
+    <image:image>
+      <image:loc>https://sadam-shah-portfolio.vercel.app/img/og/og-cover.jpg</image:loc>
+      <image:title>Sadam Shah - Full Stack Web Developer</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://sadam-shah-portfolio.vercel.app/img/hero/Profile.jpg</image:loc>
+      <image:title>Sadam Shah - Full Stack Web Developer in Islamabad, Pakistan</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://sadam-shah-portfolio.vercel.app/img/thumbs/ApexOneCRM.png</image:loc>
+      <image:title>Apex One Payments CRM - project by Sadam Shah</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://sadam-shah-portfolio.vercel.app/img/thumbs/ApexOne.png</image:loc>
+      <image:title>Apex One Payments website - project by Sadam Shah</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://sadam-shah-portfolio.vercel.app/img/thumbs/Carenclean.png</image:loc>
+      <image:title>Care n Clean website - project by Sadam Shah</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://sadam-shah-portfolio.vercel.app/img/thumbs/DocRev.png</image:loc>
+      <image:title>DocRev RCM website - project by Sadam Shah</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://sadam-shah-portfolio.vercel.app/img/thumbs/BaliTech.png</image:loc>
+      <image:title>BaliTech website - project by Sadam Shah</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://sadam-shah-portfolio.vercel.app/img/thumbs/panelCRM.png</image:loc>
+      <image:title>Carenclean CRM panel - project by Sadam Shah</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://sadam-shah-portfolio.vercel.app/img/thumbs/Sowa.png</image:loc>
+      <image:title>Sowa Tool e-commerce website - project by Sadam Shah</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://sadam-shah-portfolio.vercel.app/img/thumbs/Marifahsol.png</image:loc>
+      <image:title>Marifahsol company website - project by Sadam Shah</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://sadam-shah-portfolio.vercel.app/img/thumbs/PreciousTech.png</image:loc>
+      <image:title>Precision Tech Corp website - project by Sadam Shah</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://sadam-shah-portfolio.vercel.app/img/cv/Sadam_Shah_Resume_CV.pdf</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+</urlset>

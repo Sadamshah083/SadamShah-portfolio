@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Block server-side helper that has no crawlable content
+Disallow: /modal/
+
+Sitemap: https://sadam-shah-portfolio.vercel.app/sitemap.xml

@@ -1,0 +1,17 @@
+{
+  "name": "Sadam Shah | Full Stack Web Developer",
+  "short_name": "Sadam Shah",
+  "description": "Portfolio of Sadam Shah, Full Stack Web Developer in Islamabad, Pakistan.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ff451b",
+  "icons": [
+    {
+      "src": "/img/logo/Sadam_Favicon.png",
+      "sizes": "390x267",
+      "type": "image/png"
+    }
+  ]
+}
