@@ -4,7 +4,7 @@
 
   <url>
     <loc>https://sadam-shah-portfolio.vercel.app/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
 
@@ -17,8 +17,8 @@
       <image:title>Sadam Shah - Full Stack Web Developer in Islamabad, Pakistan</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://sadam-shah-portfolio.vercel.app/img/thumbs/ApexOneCRM.png</image:loc>
-      <image:title>Apex One Payments CRM - project by Sadam Shah</image:title>
+      <image:loc>https://sadam-shah-portfolio.vercel.app/img/thumbs/ApexOneCRM.jpg</image:loc>
+      <image:title>Apex One Payments CRM agent portal - project by Sadam Shah</image:title>
     </image:image>
     <image:image>
       <image:loc>https://sadam-shah-portfolio.vercel.app/img/thumbs/ApexOne.png</image:loc>
@@ -56,7 +56,7 @@
 
   <url>
     <loc>https://sadam-shah-portfolio.vercel.app/img/cv/Sadam_Shah_Resume_CV.pdf</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
