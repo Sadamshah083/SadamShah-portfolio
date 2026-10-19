@@ -270,3 +270,22 @@ footer{padding:10px 0 48px}
 .card .go{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:#fff;color:var(--ink);font-size:18px;box-shadow:0 8px 16px -8px rgba(11,18,32,.4);transition:.3s}
 .card:hover .go{background:var(--ac);color:#fff;transform:rotate(45deg) scale(1.08)}
 @media(max-width:1000px){.card .shot{transform:none}}
+
+/* ===== static, tidy project cards (no hover animation) ===== */
+.projects{perspective:none}
+.card,.card:hover{transform:none!important;transition:none!important;transform-style:flat;will-change:auto;
+ box-shadow:0 1px 0 #fff inset,0 2px 4px rgba(11,18,32,.05),0 26px 40px -26px rgba(11,18,32,.38)}
+.card:before,.card:hover:before{display:none}
+.card{padding:12px 12px 20px;cursor:pointer}
+.card .shot,.card:hover .shot{transform:none;display:flex;flex-direction:column;aspect-ratio:16/10;border-radius:14px;overflow:hidden;
+ background:#fff;box-shadow:0 0 0 1px rgba(11,18,32,.09),0 14px 24px -14px rgba(11,18,32,.45)}
+.card .shot .bar{position:static;flex:none;height:26px;padding:0 12px}
+.card .shot img,.card:hover .shot img{position:static;flex:1;min-height:0;width:100%;height:auto;object-fit:cover;object-position:top center;transform:none;transition:none;display:block}
+.card .shot:after,.card:hover .shot:after{display:none}
+.card .mlbody{position:static;flex:1}
+.card .meta{transform:none;padding:16px 8px 0}
+.card .go,.card:hover .go{transition:none;transform:none;background:#fff;color:var(--ink)}
+.card:hover .go{background:#fff;color:var(--ink)}
+.card h3,.card .tag{transform:none}
+.card .shot.ml .bar{background:#0f1a30;border-color:#1f2f50}
+.card .shot.ml .bar em{background:#1b2a48;color:#9fb2d4}
