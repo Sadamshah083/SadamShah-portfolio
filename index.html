@@ -156,7 +156,7 @@
 </script>
 
 <link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/portfolio.css?v=dark7">
+<link rel="stylesheet" href="css/portfolio.css?v=dark8">
 </head>
 <body>
 <div id="prog"></div><canvas id="gl"></canvas><canvas id="fx"></canvas><div id="spot"></div>
@@ -416,10 +416,10 @@ var fx=document.getElementById('fx');if(fx)fx.style.display='none';
 R.setPixelRatio(Math.min(devicePixelRatio,1.75));
 var sc=new THREE.Scene(),cam=new THREE.PerspectiveCamera(55,1,.1,100);cam.position.z=12;
 function mk(g,c,o){return new THREE.Mesh(g,new THREE.MeshBasicMaterial({color:c,wireframe:true,transparent:true,opacity:o}))}
-var knot=mk(new THREE.TorusKnotGeometry(2.3,.62,160,20),0xff6a2a,.3);knot.position.set(5.4,1.2,-2);sc.add(knot);
-var ico=mk(new THREE.IcosahedronGeometry(2.1,1),0x4f8df5,.28);ico.position.set(-6.6,-3,-3);sc.add(ico);
-var oct=mk(new THREE.OctahedronGeometry(1.1,0),0x9cc8ff,.35);oct.position.set(-3.4,3.6,-1);sc.add(oct);
-var ring=mk(new THREE.TorusGeometry(1.7,.05,8,90),0xffb48a,.4);ring.position.set(7.6,-4.6,-3);sc.add(ring);
+var knot=mk(new THREE.TorusKnotGeometry(2.3,.62,160,20),0xff6a2a,.6);knot.position.set(5.4,1.2,-2);sc.add(knot);
+var ico=mk(new THREE.IcosahedronGeometry(2.1,1),0x4f8df5,.55);ico.position.set(-6.6,-3,-3);sc.add(ico);
+var oct=mk(new THREE.OctahedronGeometry(1.1,0),0x9cc8ff,.65);oct.position.set(-3.4,3.6,-1);sc.add(oct);
+var ring=mk(new THREE.TorusGeometry(1.7,.05,8,90),0xffb48a,.7);ring.position.set(7.6,-4.6,-3);sc.add(ring);
 // particle field
 var N=1400,pos=new Float32Array(N*3);
 for(var i=0;i<N;i++){pos[i*3]=(Math.random()-.5)*60;pos[i*3+1]=(Math.random()-.5)*40;pos[i*3+2]=(Math.random()-.5)*40-6}
@@ -428,10 +428,13 @@ var pts=new THREE.Points(pg,new THREE.PointsMaterial({color:0xa9c8ff,size:.07,tr
 var anch={knot:[1,.8],ico:[-1,.7],oct:[-1,.45],ring:[1,.5]};
 function hw(z){return Math.tan(cam.fov*Math.PI/360)*(cam.position.z-z)*cam.aspect}
 function rs(){var w=innerWidth,h=innerHeight;R.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();
-  var sm=w<900?.45:.62;
-  knot.scale.setScalar(sm);ico.scale.setScalar(sm);oct.scale.setScalar(sm*.9);ring.scale.setScalar(sm*.9);
-  knot.userData.x=hw(knot.position.z)*(w<900?1.0:.97);ico.userData.x=-hw(ico.position.z)*(w<900?1.0:.97);
-  oct.userData.x=-hw(oct.position.z)*.93;ring.userData.x=hw(ring.position.z)*.93}
+  var half=w/2,gut=half-Math.min(660,half-20),k=function(m){return hw(m.position.z)/half};
+  var specs=[[knot,1,2.9],[ico,-1,2.4],[oct,-1,1.2],[ring,1,1.8]];
+  specs.forEach(function(s){var m=s[0],dir=s[1],r=s[2],wp=k(m),sc,x;
+    if(gut>170){var dia=gut*(m===knot||m===ico?.8:.55);sc=(dia/2*wp)/r;x=dir*(half-gut/2)*wp}
+    else{sc=(w<900?.4:.55);x=dir*hw(m.position.z)*.96}
+    m.scale.setScalar(sc);m.userData.x=x});
+  document.body.classList.add('gl-on')}
 rs();addEventListener('resize',rs);
 var mx=0,my=0,tx=0,ty=0,sy=0,run=true;
 addEventListener('mousemove',function(e){mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5});
