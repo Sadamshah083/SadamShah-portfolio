@@ -156,9 +156,10 @@
 </script>
 
 <link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/portfolio.css?v=dark2">
+<link rel="stylesheet" href="css/portfolio.css?v=dark3">
 </head>
 <body>
+<div id="prog"></div><canvas id="fx"></canvas><div id="spot"></div>
 <div class="bg" aria-hidden="true"><span class="ribbon r1"></span><span class="ribbon r2"></span><span class="glow g1"></span><span class="glow g2"></span></div>
 <header>
   <div class="wrap nav">
@@ -180,7 +181,7 @@
   <div class="hero">
     <div class="hero-copy">
       <div class="eyebrow">Full Stack Web Developer</div>
-      <h1>Sadam<br>Shah<span class="dot"></span></h1>
+      <h1><span class="ln"><span>Sadam</span></span><span class="ln"><span>Shah<i class="dot"></i></span></span></h1>
       <p class="lead">Building thoughtful websites and reliable web applications.</p>
       <p class="loc"><svg width="16" height="18" viewBox="0 0 16 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 19s6-5.6 6-10.5A6 6 0 0 0 2 8.5C2 13.4 8 19 8 19z"/><circle cx="8" cy="8.5" r="2.2"/></svg> Islamabad, Pakistan</p>
       <div class="cta">
@@ -201,7 +202,7 @@
   </div>
 
   <section id="work">
-    <div class="sec-head">
+    <div class="sec-head rv">
       <div><div class="eyebrow line">Featured Projects</div><h2>Selected work</h2><p class="sub">A few things I've built.</p></div>
       <a href="#more" class="ulink">View all projects <span>&rarr;</span></a>
     </div>
@@ -217,7 +218,7 @@
     </div>
 
     <div class="eyebrow line" id="more" style="margin:54px 0 22px">More Projects</div>
-    <div class="filters" id="filters"><button class="on" data-f="all">All</button><button data-f="crm">CRM</button><button data-f="web">Websites</button><button data-f="ml">ML / FYP</button></div>
+    <div class="filters rv" id="filters"><button class="on" data-f="all">All</button><button data-f="crm">CRM</button><button data-f="web">Websites</button><button data-f="ml">ML / FYP</button></div>
     <div class="mini" id="projects">
       <a class="mcard" data-cat="crm" href="https://panel.carencleanss.com/" target="_blank" rel="noopener"><div class="shot"><img src="img/thumbs/panelCRM.png" alt="Care n Clean CRM" loading="lazy"></div><div class="mm"><div><h3>Care n Clean CRM</h3><span class="chip">Web Application</span></div><span class="go">&rarr;</span></div></a>
       <a class="mcard" data-cat="web" href="https://apexonepayments.com/" target="_blank" rel="noopener"><div class="shot"><img src="img/thumbs/ApexOne.png" alt="Apex One Payments website" loading="lazy"></div><div class="mm"><div><h3>Apex One Payments</h3><span class="chip">Website</span></div><span class="go">&rarr;</span></div></a>
@@ -235,11 +236,11 @@
     <div class="about">
       <div>
         <div class="eyebrow line">About Me</div>
-        <h2>Thoughtful code.<br><em>Useful experiences.</em></h2>
-        <p class="lede">Full Stack Web Developer with experience building responsive websites, CRM platforms, dashboards and API-connected applications. Skilled in React.js, Next.js, Node.js, PHP/Laravel, Python, MySQL and MongoDB, with practical experience in authentication, role-based access control, real-time updates, data automation and performance optimization.</p>
-        <div class="lang"><b>Languages</b><span>English &mdash; Professional working proficiency</span><span>Urdu &mdash; Native or bilingual proficiency</span></div>
+        <h2 class="rv">Thoughtful code.<br><em>Useful experiences.</em></h2>
+        <p class="lede rv">Full Stack Web Developer with experience building responsive websites, CRM platforms, dashboards and API-connected applications. Skilled in React.js, Next.js, Node.js, PHP/Laravel, Python, MySQL and MongoDB, with practical experience in authentication, role-based access control, real-time updates, data automation and performance optimization.</p>
+        <div class="lang rv"><b>Languages</b><span>English &mdash; Professional working proficiency</span><span>Urdu &mdash; Native or bilingual proficiency</span></div>
       </div>
-      <div class="panel">
+      <div class="panel rv-l">
         <ul class="facts">
           <li><b>Name</b>Sadam Shah</li>
           <li><b>Email</b><a href="mailto:Sadamshah083@gmail.com">Sadamshah083@gmail.com</a></li>
@@ -256,22 +257,22 @@
   </section>
 
   <section id="experience">
-    <div class="eyebrow line">Experience</div><h2 style="margin-bottom:40px">Where I've worked</h2>
+    <div class="eyebrow line">Experience</div><h2 class="rv" style="margin-bottom:40px">Where I've worked</h2>
     <div class="timeline">
-      <div class="job"><small>May 2026 &ndash; Present &middot; Full-time &middot; On-site</small><h3>Full Stack Engineer</h3><em>BaliTech &mdash; Islamabad, Pakistan</em></div>
-      <div class="job"><small>Dec 2025 &ndash; Apr 2026 &middot; Full-time &middot; On-site</small><h3>Frontend Developer</h3><em>Marifah Sol &mdash; Islamabad, Pakistan</em>
+      <div class="rv-l job"><small>May 2026 &ndash; Present &middot; Full-time &middot; On-site</small><h3>Full Stack Engineer</h3><em>BaliTech &mdash; Islamabad, Pakistan</em></div>
+      <div class="rv-l job"><small>Dec 2025 &ndash; Apr 2026 &middot; Full-time &middot; On-site</small><h3>Frontend Developer</h3><em>Marifah Sol &mdash; Islamabad, Pakistan</em>
         <ul><li>Developed responsive interfaces, dashboards, forms and user portals using React.js, Next.js, TypeScript, Tailwind CSS, Bootstrap and Material UI.</li><li>Integrated REST APIs, authentication, role-based views and application state; resolved UI issues and improved performance across devices.</li></ul></div>
-      <div class="job"><small>Sep 2025 &ndash; Dec 2025 &middot; Internship</small><h3>Frontend Web Developer Intern</h3><em>Marifah Sol &mdash; Islamabad, Pakistan</em>
+      <div class="rv-l job"><small>Sep 2025 &ndash; Dec 2025 &middot; Internship</small><h3>Frontend Web Developer Intern</h3><em>Marifah Sol &mdash; Islamabad, Pakistan</em>
         <ul><li>Built reusable components and API-connected pages; progressed to a full-time Frontend Developer role after completing the internship.</li></ul></div>
-      <div class="job"><small>Dec 2024 &ndash; Aug 2025 &middot; Internship &middot; Remote</small><h3>Frontend Developer Intern</h3><em>Precise Tech Pvt Ltd</em>
+      <div class="rv-l job"><small>Dec 2024 &ndash; Aug 2025 &middot; Internship &middot; Remote</small><h3>Frontend Developer Intern</h3><em>Precise Tech Pvt Ltd</em>
         <ul><li>Developed React and Next.js components, responsive layouts, navigation and forms; supported API integration, debugging and browser compatibility.</li></ul></div>
-      <div class="job edu"><small>2021 &ndash; 2025</small><h3>Bachelor of Science in Computer Science</h3><em>COMSATS University Islamabad, Abbottabad Campus</em>
+      <div class="rv-l job edu"><small>2021 &ndash; 2025</small><h3>Bachelor of Science in Computer Science</h3><em>COMSATS University Islamabad, Abbottabad Campus</em>
         <ul><li>Final-year project: House Price Prediction System. A React prediction interface, a prepared and trained housing dataset, and an inference API that estimates house prices from property features.</li></ul></div>
     </div>
   </section>
 
   <section id="contact">
-    <div class="contact">
+    <div class="contact rv">
       <div><div class="eyebrow line">Contact</div><h2>Let's build something great.</h2><p>Have a project in mind? Send a message and I'll get back to you.</p>
         <div class="row"><a href="mailto:Sadamshah083@gmail.com">Sadamshah083@gmail.com</a></div>
         <div class="row"><a href="tel:+923362122015">+92 336 2122015</a></div>
@@ -308,6 +309,31 @@ document.getElementById('cf').onsubmit=function(e){
   location.href='mailto:Sadamshah083@gmail.com?subject='+encodeURIComponent('Portfolio Contact')+'&body='+encodeURIComponent('Name: '+d.get('name')+'\nEmail: '+d.get('email')+'\n\n'+d.get('message'));
   this.reset();
 };
+
+(function(){
+var rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+var pr=document.getElementById('prog'),tlEl=document.querySelector('.timeline'),bg=document.querySelector('.bg');
+function onS(){var h=document.documentElement,max=h.scrollHeight-innerHeight;pr.style.transform='scaleX('+(max>0?scrollY/max:0)+')';
+ if(!rm)bg.style.transform='translateY('+(scrollY*-.06)+'px)';
+ if(tlEl){var r=tlEl.getBoundingClientRect(),p=(innerHeight*.65-r.top)/r.height;tlEl.style.setProperty('--tl',Math.max(0,Math.min(1,p))*100+'%')}}
+addEventListener('scroll',onS,{passive:true});onS();
+if(rm)return;
+var els=[].slice.call(document.querySelectorAll('.rv,.rv-l,.skills'));
+[].forEach.call(document.querySelectorAll('.skills'),function(g){[].forEach.call(g.children,function(c,i){c.style.transitionDelay=(i*45)+'ms'})});
+var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}})},{threshold:.15});
+els.forEach(function(e){io.observe(e)});
+var sp=document.getElementById('spot'),mx=innerWidth/2,my=300;
+addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;sp.style.opacity=1;sp.style.transform='translate('+mx+'px,'+my+'px)'});
+var cv=document.getElementById('fx'),cx=cv.getContext('2d'),W,H,pts=[];
+function size(){W=cv.width=innerWidth;H=cv.height=innerHeight;pts=[];var n=Math.min(70,Math.floor(W*H/22000));for(var i=0;i<n;i++)pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25})}
+size();addEventListener('resize',size);
+(function loop(){cx.clearRect(0,0,W,H);
+ for(var i=0;i<pts.length;i++){var a=pts[i];a.x+=a.vx;a.y+=a.vy;if(a.x<0||a.x>W)a.vx*=-1;if(a.y<0||a.y>H)a.vy*=-1;
+  cx.fillStyle='rgba(150,190,255,.55)';cx.beginPath();cx.arc(a.x,a.y,1.3,0,6.3);cx.fill();
+  for(var j=i+1;j<pts.length;j++){var b=pts[j],dx=a.x-b.x,dy=a.y-b.y,d=dx*dx+dy*dy;if(d<17000){cx.strokeStyle='rgba(120,170,255,'+(.16*(1-d/17000))+')';cx.beginPath();cx.moveTo(a.x,a.y);cx.lineTo(b.x,b.y);cx.stroke()}}
+  var mdx=a.x-mx,mdy=a.y-my,md=mdx*mdx+mdy*mdy;if(md<24000){cx.strokeStyle='rgba(255,138,74,'+(.4*(1-md/24000))+')';cx.beginPath();cx.moveTo(a.x,a.y);cx.lineTo(mx,my);cx.stroke()}}
+ requestAnimationFrame(loop)})();
+})();
 </script>
 </body>
 </html>
