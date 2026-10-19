@@ -156,7 +156,7 @@
 </script>
 
 <link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/portfolio.css?v=dark9">
+<link rel="stylesheet" href="css/portfolio.css?v=dark12">
 </head>
 <body>
 <div id="prog"></div><canvas id="gl"></canvas><canvas id="fx"></canvas><div id="spot"></div>
@@ -432,7 +432,7 @@ function rs(){var w=innerWidth,h=innerHeight;R.setSize(w,h,false);cam.aspect=w/h
   var specs=[[knot,1,2.9],[ico,-1,2.4],[oct,-1,1.2],[ring,1,1.8]];
   specs.forEach(function(s){var m=s[0],dir=s[1],r=s[2],wp=k(m),sc,x;
     if(gut>170){var dia=gut*(m===knot||m===ico?.8:.55);sc=(dia/2*wp)/r;x=dir*(half-gut/2)*wp}
-    else{sc=(w<900?.4:.55);x=dir*hw(m.position.z)*.96}
+    else{var f=w<900?.22:.3;sc=(half*f*wp)/r;x=dir*(half-half*f*.6)*wp}
     m.scale.setScalar(sc);m.userData.x=x});
   document.body.classList.add('gl-on')}
 rs();addEventListener('resize',rs);
