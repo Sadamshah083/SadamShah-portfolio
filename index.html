@@ -159,6 +159,7 @@
 <link rel="stylesheet" href="css/portfolio.css">
 </head>
 <body>
+<div class="blobs"><i></i><i></i><i></i></div>
 <header>
   <div class="wrap nav">
     <a href="#top" class="logo" aria-label="Sadam Shah"><img src="img/logo/dark.png" alt="Sadam - web developer"></a>
@@ -179,7 +180,7 @@
   <div class="hero">
     <div>
       <div class="eyebrow">Full Stack Web Developer</div>
-      <h1>Sadam<br>Shah<span class="dot">.</span></h1>
+      <h1>Sadam<br>Shah<span class="dot"></span></h1>
       <p class="lead">Building thoughtful websites and reliable web applications.</p>
       <p class="loc">Based in Islamabad, Pakistan.</p>
       <div class="cta">
@@ -187,9 +188,15 @@
         <a href="#contact" class="link">Let's Talk <span>&rarr;</span></a>
       </div>
     </div>
-    <div class="photo-frame">
+    <div class="scene" id="scene">
+    <div class="photo-frame" id="tilt">
       <div class="photo"><img src="img/hero/Profile.jpg" alt="Sadam Shah, Full Stack Web Developer in Islamabad"></div>
       <span class="vtext">Sadam Shah &mdash; Developer</span><span class="vline"></span>
+    </div>
+    <div class="float glass f1"><b>1+</b>Years<small>Experience</small></div>
+    <div class="float glass f2"><b>10+</b>Live<small>Projects shipped</small></div>
+    <div class="float glass f3">React &middot; Next.js &middot; Node</div>
+    <div class="float sphere"></div><div class="float ring"></div>
     </div>
   </div>
 
@@ -320,6 +327,22 @@ document.getElementById('cf').onsubmit=function(e){
   location.href='mailto:sadamshah083@gmail.com?subject='+encodeURIComponent('Portfolio Contact')+'&body='+encodeURIComponent('Name: '+d.get('name')+'\nEmail: '+d.get('email')+'\n\n'+d.get('message'));
   this.reset();
 };
+
+var rm=matchMedia('(prefers-reduced-motion:reduce)').matches,hov=matchMedia('(hover:hover)').matches;
+var tl=document.getElementById('tilt'),sc=document.getElementById('scene');
+if(tl&&!rm&&hov){
+  sc.addEventListener('mousemove',function(e){var r=sc.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;tl.style.transform='rotateY('+(x*14)+'deg) rotateX('+(-y*12)+'deg)'});
+  sc.addEventListener('mouseleave',function(){tl.style.transform=''});
+}
+[].forEach.call(document.querySelectorAll('.card'),function(c){
+  if(rm||!hov)return;
+  c.addEventListener('mousemove',function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+    c.style.transform='rotateY('+((x-.5)*12)+'deg) rotateX('+((.5-y)*10)+'deg) translateY(-6px)';c.style.setProperty('--gx',x*100+'%');c.style.setProperty('--gy',y*100+'%')});
+  c.addEventListener('mouseleave',function(){c.style.transform=''});
+});
+var rvEls=[].slice.call(document.querySelectorAll('.docs,.work>div,.card,.about>div,.timeline .job,.contact,.stats div'));
+rvEls.forEach(function(el,i){el.classList.add('rv');el.style.transitionDelay=((i%3)*90)+'ms'});
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}})},{threshold:.12});rvEls.forEach(function(el){io.observe(el)})}else{rvEls.forEach(function(el){el.classList.add('in')})}
 </script>
 </body>
 </html>
