@@ -156,10 +156,10 @@
 </script>
 
 <link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/portfolio.css?v=dark12">
+<link rel="stylesheet" href="css/portfolio.css?v=dark13">
 </head>
 <body>
-<div id="prog"></div><canvas id="gl"></canvas><canvas id="fx"></canvas><div id="spot"></div>
+<div id="prog"></div><div id="spot"></div>
 <div class="bg" aria-hidden="true"><span class="ribbon r1"></span><span class="ribbon r2"></span><span class="glow g1"></span><span class="glow g2"></span></div>
 <header>
   <div class="wrap nav">
@@ -335,7 +335,6 @@
   </section>
 </main>
 <footer>&copy; <span id="y"></span> Sadam Shah &mdash; Full Stack Web Developer</footer>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
 document.getElementById('y').textContent=new Date().getFullYear();
 var m=document.getElementById('menu');
@@ -372,15 +371,6 @@ var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isInt
 els.forEach(function(e){io.observe(e)});
 var sp=document.getElementById('spot'),mx=innerWidth/2,my=300;
 addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;sp.style.opacity=1;sp.style.transform='translate('+mx+'px,'+my+'px)'});
-var cv=document.getElementById('fx'),cx=cv.getContext('2d'),W,H,pts=[];
-function size(){W=cv.width=innerWidth;H=cv.height=innerHeight;pts=[];var n=Math.min(70,Math.floor(W*H/22000));for(var i=0;i<n;i++)pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25})}
-size();addEventListener('resize',size);
-(function loop(){cx.clearRect(0,0,W,H);
- for(var i=0;i<pts.length;i++){var a=pts[i];a.x+=a.vx;a.y+=a.vy;if(a.x<0||a.x>W)a.vx*=-1;if(a.y<0||a.y>H)a.vy*=-1;
-  cx.fillStyle='rgba(150,190,255,.55)';cx.beginPath();cx.arc(a.x,a.y,1.3,0,6.3);cx.fill();
-  for(var j=i+1;j<pts.length;j++){var b=pts[j],dx=a.x-b.x,dy=a.y-b.y,d=dx*dx+dy*dy;if(d<17000){cx.strokeStyle='rgba(120,170,255,'+(.16*(1-d/17000))+')';cx.beginPath();cx.moveTo(a.x,a.y);cx.lineTo(b.x,b.y);cx.stroke()}}
-  var mdx=a.x-mx,mdy=a.y-my,md=mdx*mdx+mdy*mdy;if(md<24000){cx.strokeStyle='rgba(255,138,74,'+(.4*(1-md/24000))+')';cx.beginPath();cx.moveTo(a.x,a.y);cx.lineTo(mx,my);cx.stroke()}}
- requestAnimationFrame(loop)})();
 })();
 
 (function(){
@@ -408,50 +398,6 @@ if('IntersectionObserver' in window){var co=new IntersectionObserver(function(es
 [].forEach.call(document.querySelectorAll('.stats'),function(e){e.classList.add('in')});
 })();
 
-(function(){
-if(typeof THREE==='undefined'||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
-var cv=document.getElementById('gl'),R;
-try{R=new THREE.WebGLRenderer({canvas:cv,alpha:true,antialias:true})}catch(e){return}
-var fx=document.getElementById('fx');if(fx)fx.style.display='none';
-R.setPixelRatio(Math.min(devicePixelRatio,1.75));
-var sc=new THREE.Scene(),cam=new THREE.PerspectiveCamera(55,1,.1,100);cam.position.z=12;
-function mk(g,c,o){return new THREE.Mesh(g,new THREE.MeshBasicMaterial({color:c,wireframe:true,transparent:true,opacity:o}))}
-var knot=mk(new THREE.TorusKnotGeometry(2.3,.62,160,20),0xff6a2a,.6);knot.position.set(5.4,1.2,-2);sc.add(knot);
-var ico=mk(new THREE.IcosahedronGeometry(2.1,1),0x4f8df5,.55);ico.position.set(-6.6,-3,-3);sc.add(ico);
-var oct=mk(new THREE.OctahedronGeometry(1.1,0),0x9cc8ff,.65);oct.position.set(-3.4,3.6,-1);sc.add(oct);
-var ring=mk(new THREE.TorusGeometry(1.7,.05,8,90),0xffb48a,.7);ring.position.set(7.6,-4.6,-3);sc.add(ring);
-// particle field
-var N=1400,pos=new Float32Array(N*3);
-for(var i=0;i<N;i++){pos[i*3]=(Math.random()-.5)*60;pos[i*3+1]=(Math.random()-.5)*40;pos[i*3+2]=(Math.random()-.5)*40-6}
-var pg=new THREE.BufferGeometry();pg.setAttribute('position',new THREE.BufferAttribute(pos,3));
-var pts=new THREE.Points(pg,new THREE.PointsMaterial({color:0xa9c8ff,size:.07,transparent:true,opacity:.75,depthWrite:false}));sc.add(pts);
-var anch={knot:[1,.8],ico:[-1,.7],oct:[-1,.45],ring:[1,.5]};
-function hw(z){return Math.tan(cam.fov*Math.PI/360)*(cam.position.z-z)*cam.aspect}
-function rs(){var w=innerWidth,h=innerHeight;R.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();
-  var half=w/2,gut=half-Math.min(660,half-20),k=function(m){return hw(m.position.z)/half};
-  var specs=[[knot,1,2.9],[ico,-1,2.4],[oct,-1,1.2],[ring,1,1.8]];
-  specs.forEach(function(s){var m=s[0],dir=s[1],r=s[2],wp=k(m),sc,x;
-    if(gut>170){var dia=gut*(m===knot||m===ico?.8:.55);sc=(dia/2*wp)/r;x=dir*(half-gut/2)*wp}
-    else{var f=w<900?.22:.3;sc=(half*f*wp)/r;x=dir*(half-half*f*.6)*wp}
-    m.scale.setScalar(sc);m.userData.x=x});
-  document.body.classList.add('gl-on')}
-rs();addEventListener('resize',rs);
-var mx=0,my=0,tx=0,ty=0,sy=0,run=true;
-addEventListener('mousemove',function(e){mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5});
-document.addEventListener('visibilitychange',function(){run=!document.hidden;if(run)tick()});
-var clk=new THREE.Clock();
-function tick(){if(!run)return;requestAnimationFrame(tick);
-  var t=clk.getElapsedTime();tx+=(mx-tx)*.05;ty+=(my-ty)*.05;
-  var s=scrollY/Math.max(1,document.documentElement.scrollHeight-innerHeight);sy+=(s-sy)*.06;
-  knot.rotation.x=t*.22+sy*6;knot.rotation.y=t*.3+tx*1.5;knot.position.x=knot.userData.x+Math.sin(t*.5)*.5;knot.position.y=2+Math.sin(t*.8)*.5-sy*3;
-  ico.rotation.x=-t*.18;ico.rotation.y=t*.25+sy*5;ico.position.x=ico.userData.x+Math.cos(t*.45)*.5;ico.position.y=-2.5+Math.cos(t*.6)*.5+sy*3;
-  oct.rotation.x=t*.5;oct.rotation.z=t*.35;oct.position.x=oct.userData.x+Math.sin(t*.7)*.4;oct.position.y=3.4+Math.sin(t*1.1)*.4-sy*2;
-  ring.rotation.x=t*.4+sy*4;ring.rotation.y=t*.2;ring.position.x=ring.userData.x+Math.cos(t*.6)*.4;ring.position.y=-3.6+Math.sin(t)*.4+sy*2;
-  pts.rotation.y=t*.012+tx*.15;pts.rotation.x=ty*.1+sy*.5;
-  cam.position.x=tx*.6;cam.position.y=-ty*.5;cam.lookAt(0,0,0);
-  R.render(sc,cam)}
-tick();
-})();
 </script>
 </body>
 </html>

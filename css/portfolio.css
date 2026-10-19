@@ -292,3 +292,5 @@ html,body{max-width:100%}
 }
 .panel.rv-l.in{transform:none}
 @media(max-width:1000px){.panel.rv-l{transform:translateY(30px)}.panel.rv-l.in{transform:none}.rv-l{transform:translateY(24px)}.rv-l.in{transform:none}}
+
+.ribbon,#gl,#fx{display:none!important}
