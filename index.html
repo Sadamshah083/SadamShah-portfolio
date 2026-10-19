@@ -156,10 +156,10 @@
 </script>
 
 <link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/portfolio.css?v=dark4">
+<link rel="stylesheet" href="css/portfolio.css?v=dark5">
 </head>
 <body>
-<div id="prog"></div><canvas id="fx"></canvas><div id="spot"></div>
+<div id="prog"></div><canvas id="gl"></canvas><canvas id="fx"></canvas><div id="spot"></div>
 <div class="bg" aria-hidden="true"><span class="ribbon r1"></span><span class="ribbon r2"></span><span class="glow g1"></span><span class="glow g2"></span></div>
 <header>
   <div class="wrap nav">
@@ -335,6 +335,7 @@
   </section>
 </main>
 <footer>&copy; <span id="y"></span> Sadam Shah &mdash; Full Stack Web Developer</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
 document.getElementById('y').textContent=new Date().getFullYear();
 var m=document.getElementById('menu');
@@ -405,6 +406,43 @@ function count(el){var n=+el.dataset.n,s=el.dataset.s||'',t0=null;
   (function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/1600,1),e=1-Math.pow(1-p,4);el.textContent=Math.round(n*e)+(p===1?s:'');if(p<1)requestAnimationFrame(step)})(performance.now())}
 if('IntersectionObserver' in window){var co=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){count(en.target);co.unobserve(en.target)}})},{threshold:.6});cn.forEach(function(e){co.observe(e)})}else{cn.forEach(count)}
 [].forEach.call(document.querySelectorAll('.stats'),function(e){e.classList.add('in')});
+})();
+
+(function(){
+if(typeof THREE==='undefined'||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+var cv=document.getElementById('gl'),R;
+try{R=new THREE.WebGLRenderer({canvas:cv,alpha:true,antialias:true})}catch(e){return}
+var fx=document.getElementById('fx');if(fx)fx.style.display='none';
+R.setPixelRatio(Math.min(devicePixelRatio,1.75));
+var sc=new THREE.Scene(),cam=new THREE.PerspectiveCamera(55,1,.1,100);cam.position.z=12;
+function mk(g,c,o){return new THREE.Mesh(g,new THREE.MeshBasicMaterial({color:c,wireframe:true,transparent:true,opacity:o}))}
+var knot=mk(new THREE.TorusKnotGeometry(2.3,.62,160,20),0xff6a2a,.5);knot.position.set(5.4,1.2,-2);sc.add(knot);
+var ico=mk(new THREE.IcosahedronGeometry(2.1,1),0x4f8df5,.42);ico.position.set(-6.6,-3,-3);sc.add(ico);
+var oct=mk(new THREE.OctahedronGeometry(1.1,0),0x9cc8ff,.55);oct.position.set(-3.4,3.6,-1);sc.add(oct);
+var ring=mk(new THREE.TorusGeometry(1.7,.05,8,90),0xffb48a,.7);ring.position.set(7.6,-4.6,-3);sc.add(ring);
+// particle field
+var N=1400,pos=new Float32Array(N*3);
+for(var i=0;i<N;i++){pos[i*3]=(Math.random()-.5)*60;pos[i*3+1]=(Math.random()-.5)*40;pos[i*3+2]=(Math.random()-.5)*40-6}
+var pg=new THREE.BufferGeometry();pg.setAttribute('position',new THREE.BufferAttribute(pos,3));
+var pts=new THREE.Points(pg,new THREE.PointsMaterial({color:0xa9c8ff,size:.07,transparent:true,opacity:.75,depthWrite:false}));sc.add(pts);
+function rs(){var w=innerWidth,h=innerHeight;R.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();
+  var s=w<900?.55:1;[knot,ico,oct,ring].forEach(function(m){m.scale.setScalar(s)});if(w<900){knot.position.x=3.2;ico.position.x=-3.6;ring.position.x=4}else{knot.position.x=5.4;ico.position.x=-6.6;ring.position.x=7.6}}
+rs();addEventListener('resize',rs);
+var mx=0,my=0,tx=0,ty=0,sy=0,run=true;
+addEventListener('mousemove',function(e){mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5});
+document.addEventListener('visibilitychange',function(){run=!document.hidden;if(run)tick()});
+var clk=new THREE.Clock();
+function tick(){if(!run)return;requestAnimationFrame(tick);
+  var t=clk.getElapsedTime();tx+=(mx-tx)*.05;ty+=(my-ty)*.05;
+  var s=scrollY/Math.max(1,document.documentElement.scrollHeight-innerHeight);sy+=(s-sy)*.06;
+  knot.rotation.x=t*.22+sy*6;knot.rotation.y=t*.3+tx*1.5;knot.position.y=1.2+Math.sin(t*.8)*.5-sy*9;
+  ico.rotation.x=-t*.18;ico.rotation.y=t*.25+sy*5;ico.position.y=-3+Math.cos(t*.6)*.5-sy*6;
+  oct.rotation.x=t*.5;oct.rotation.z=t*.35;oct.position.y=3.6+Math.sin(t*1.1)*.4-sy*12;
+  ring.rotation.x=t*.4+sy*4;ring.rotation.y=t*.2;ring.position.y=-4.6+Math.sin(t)*.4-sy*7;
+  pts.rotation.y=t*.012+tx*.15;pts.rotation.x=ty*.1+sy*.5;
+  cam.position.x=tx*2.4;cam.position.y=-ty*1.6;cam.lookAt(0,0,0);
+  R.render(sc,cam)}
+tick();
 })();
 </script>
 </body>
